@@ -15,4 +15,7 @@ const register = async (email, password) => {
   //   "password": "pistol"
 };
 
-export { login, register };
+const viewDetail = (id) => {
+  return axios.get(`/api/users/${id}`);
+};
+export { login, register, viewDetail };

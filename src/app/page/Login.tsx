@@ -1,8 +1,12 @@
+"use client";
+
 import { Box, Button, Grid, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
-import { login } from "../service/service";
+import { login } from "@/app/service/service";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
+import { useRouter } from "next/navigation";
 
 type Props = {};
 
@@ -10,6 +14,8 @@ const Login = (props: Props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const { t } = useTranslation(["login"]);
+  const router = useRouter();
 
   const handleLogin = async () => {
     try {
@@ -17,10 +23,11 @@ const Login = (props: Props) => {
 
       if (response) {
         toast.success("Successfully");
-        navigate("/homePage");
+        localStorage.setItem("user", JSON.stringify({ email }));
+        navigate("/homePage", { state: { email } });
       }
     } catch (error) {
-      toast.error("Missing password");
+      toast.error("Login failed");
     }
   };
   const handleRegister = () => {
@@ -35,6 +42,7 @@ const Login = (props: Props) => {
           height: "100%",
           justifyContent: "center",
           alignItems: "center",
+          marginTop: "30px",
         }}
       >
         <Grid
@@ -53,21 +61,21 @@ const Login = (props: Props) => {
               alignItems: "center",
             }}
           >
-            Login
+            {t("login")}
           </Typography>
           <Box sx={{ padding: "20px" }}>
             <TextField
               sx={{ width: "100%", marginBottom: "30px" }}
               id="outlined-basic"
               value={email}
-              label="Email"
+              label={t("email")}
               variant="outlined"
               onChange={(e) => setEmail(e.target.value)}
             />
             <TextField
               sx={{ width: "100%" }}
               id="outlined-basic"
-              label="Password"
+              label={t("password")}
               variant="outlined"
               type="password"
               value={password}
@@ -86,10 +94,11 @@ const Login = (props: Props) => {
               variant="contained"
               onClick={handleLogin}
             >
-              Login
+              {t("login")}
             </Button>
+
             <Button variant="contained" onClick={handleRegister}>
-              Register
+              {t("register")}
             </Button>
           </Box>
         </Grid>

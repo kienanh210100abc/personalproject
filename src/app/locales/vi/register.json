@@ -1,0 +1,23 @@
+{
+  "register": "Đăng ký",
+  "password": "Mật khẩu",
+  "login": "Đã có tài khoản? Đăng nhập ngay.",
+  "success": "Đăng ký thành công !!!",
+  "fail": "Đăng ký thất bại !!!",
+  "basic": "Thông tin cơ bản",
+  "store_infor": "Thông tin cửa hàng",
+  "f_name": "Tên",
+  "l_name": "Họ",
+  "email": "Email",
+  "confirm": "Xác nhận mật khẩu",
+  "phone": "Số điện thoại",
+  "next": "Tiếp theo",
+  "store_name": "Tên cửa hàng",
+  "description": "Mô tả",
+  "type": "Mô hình dịch vụ",
+  "img": "Hình ảnh",
+  "hotline": "Hotline",
+  "fb": "Facebook",
+  "tt": "Tiktok",
+  "submit": "Xác nhận"
+}
