@@ -1,3 +1,5 @@
+"use client";
+
 import {
   AppBar,
   Box,
@@ -12,7 +14,7 @@ import { useNavigate } from "react-router-dom";
 
 type Props = {};
 
-const Header = (props: Props) => {
+export const Header = (props: Props) => {
   const { i18n } = useTranslation();
   const { t } = useTranslation(["header"]);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);

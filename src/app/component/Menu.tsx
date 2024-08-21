@@ -10,7 +10,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 type Props = {};
 
-const Menu = (props: Props) => {
+export const Menu = (props: Props) => {
   const location = useLocation();
   const { t } = useTranslation(["menu"]);
   const navigate = useNavigate();
@@ -32,7 +32,7 @@ const Menu = (props: Props) => {
             // padding: 0,
             // flexShrink: 0,
             "& .MuiDrawer-paper": {
-              width: 250,
+              width: 220,
               boxSizing: "border-box",
               display: "flex",
               flexDirection: "column",

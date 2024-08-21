@@ -1,21 +1,20 @@
 "use client";
 
-import { Box, Button, Grid, TextField, Typography } from "@mui/material";
-import React, { useState } from "react";
 import { login } from "@/app/service/service";
+import { Box, Grid, Typography } from "@mui/material";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { useTranslation } from "react-i18next";
-import { useRouter } from "next/navigation";
-
+import CustomButton from "../component/custom-button";
+import CustomTextField from "../component/custom-textfield";
 type Props = {};
 
-const Login = (props: Props) => {
+export const Login = (props: Props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const { t } = useTranslation(["login"]);
-  const router = useRouter();
 
   const handleLogin = async () => {
     try {
@@ -31,27 +30,27 @@ const Login = (props: Props) => {
     }
   };
   const handleRegister = () => {
-    navigate("/register");
+    navigate("/register/register-owner");
   };
-
   return (
     <>
       <Grid
         container
         sx={{
-          height: "100%",
+          height: "100vh",
           justifyContent: "center",
           alignItems: "center",
-          marginTop: "30px",
+          backgroundColor: "#55BA76",
         }}
       >
         <Grid
           item
           sx={{
-            border: "1px solid",
+            border: "1px solid #55BA76",
             borderRadius: "10px",
             width: "auto",
             padding: 2,
+            backgroundColor: "white",
           }}
         >
           <Typography
@@ -59,12 +58,15 @@ const Login = (props: Props) => {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
+              fontSize: "50px",
+              fontWeight: "600",
+              color: "#55BA76",
             }}
           >
             {t("login")}
           </Typography>
           <Box sx={{ padding: "20px" }}>
-            <TextField
+            <CustomTextField
               sx={{ width: "100%", marginBottom: "30px" }}
               id="outlined-basic"
               value={email}
@@ -72,7 +74,7 @@ const Login = (props: Props) => {
               variant="outlined"
               onChange={(e) => setEmail(e.target.value)}
             />
-            <TextField
+            <CustomTextField
               sx={{ width: "100%" }}
               id="outlined-basic"
               label={t("password")}
@@ -89,17 +91,20 @@ const Login = (props: Props) => {
               justifyContent: "flex-end",
             }}
           >
-            <Button
-              sx={{ marginRight: "10px" }}
-              variant="contained"
+            <CustomButton
+              sx={{
+                marginRight: "10px",
+                color: "#55BA76",
+                backgroundColor: "white",
+              }}
               onClick={handleLogin}
             >
               {t("login")}
-            </Button>
+            </CustomButton>
 
-            <Button variant="contained" onClick={handleRegister}>
+            <CustomButton onClick={handleRegister}>
               {t("register")}
-            </Button>
+            </CustomButton>
           </Box>
         </Grid>
       </Grid>

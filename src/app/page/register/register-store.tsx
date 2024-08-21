@@ -15,6 +15,8 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import CustomTextField from "@/app/component/custom-textfield";
+import CustomButton from "@/app/component/custom-button";
 type Props = {};
 
 const RegisterStore = (props: Props) => {
@@ -57,19 +59,20 @@ const RegisterStore = (props: Props) => {
       <Grid
         container
         sx={{
-          height: "100%",
+          height: "100vh",
           justifyContent: "center",
           alignItems: "center",
-          marginTop: "30px",
+          backgroundColor: "#55BA76",
         }}
       >
         <Grid
           item
           sx={{
-            border: "1px solid",
+            border: "1px solid #55BA76",
             borderRadius: "10px",
             width: "auto",
             padding: 2,
+            backgroundColor: "white",
           }}
         >
           <Typography
@@ -79,6 +82,7 @@ const RegisterStore = (props: Props) => {
               alignItems: "center",
               fontSize: "50px",
               fontWeight: "600",
+              color: "#55BA76",
             }}
           >
             {t("register")}
@@ -90,6 +94,7 @@ const RegisterStore = (props: Props) => {
               alignItems: "center",
               fontSize: "20px",
               marginBottom: "20px",
+              color: "#55BA76",
             }}
           >
             {t("store_infor")}
@@ -102,7 +107,7 @@ const RegisterStore = (props: Props) => {
               alignItems: "center",
             }}
           >
-            <TextField
+            <CustomTextField
               sx={{ width: "400px", marginBottom: "15px" }}
               id="outlined-basic"
               label={t("store_name")}
@@ -110,7 +115,7 @@ const RegisterStore = (props: Props) => {
               value={storeName}
               onChange={(e) => setStoreName(e.target.value)}
             />
-            <TextField
+            <CustomTextField
               sx={{ width: "400px", marginBottom: "15px" }}
               id="outlined-basic"
               label={t("description")}
@@ -119,7 +124,21 @@ const RegisterStore = (props: Props) => {
               onChange={(e) => setDescription(e.target.value)}
             />
             <FormControl
-              sx={{ width: "400px", marginBottom: "15px" }}
+              sx={{
+                width: "400px",
+                marginBottom: "15px",
+                "& .MuiOutlinedInput-root": {
+                  "& fieldset": {
+                    borderColor: "default", // Giữ màu mặc định khi không focused
+                  },
+                  "&.Mui-focused fieldset": {
+                    borderColor: "#55BA76", // Màu khi focused
+                  },
+                },
+                "& .MuiInputLabel-root.Mui-focused": {
+                  color: "#55BA76", // Màu label khi focused
+                },
+              }}
               variant="outlined"
             >
               <InputLabel id="type-label">{t("type")}</InputLabel>
@@ -136,6 +155,7 @@ const RegisterStore = (props: Props) => {
                 <MenuItem value="Groceries">Groceries</MenuItem>
               </Select>
             </FormControl>
+
             <Box>
               {t("img")}{" "}
               <input
@@ -145,11 +165,8 @@ const RegisterStore = (props: Props) => {
                 type="file"
                 onChange={handleImageChange}
               />
-              {/* <Button variant="contained" onClick={() => console.log(img)}>
-                Upload
-              </Button> */}
             </Box>
-            <TextField
+            <CustomTextField
               sx={{ width: "400px", marginBottom: "15px" }}
               id="outlined-basic"
               label={t("hotline")}
@@ -159,7 +176,7 @@ const RegisterStore = (props: Props) => {
               onChange={(e) => setHotline(e.target.value)}
             />
 
-            <TextField
+            <CustomTextField
               sx={{ width: "400px", marginBottom: "15px" }}
               id="outlined-basic"
               label={t("fb")}
@@ -168,7 +185,7 @@ const RegisterStore = (props: Props) => {
               value={fb}
               onChange={(e) => setFb(e.target.value)}
             />
-            <TextField
+            <CustomTextField
               sx={{ width: "400px", marginBottom: "15px" }}
               id="outlined-basic"
               label={t("tt")}
@@ -186,16 +203,13 @@ const RegisterStore = (props: Props) => {
               alignItems: "flex-end",
             }}
           >
-            <Button
+            <CustomButton
               sx={{ width: "15vh", marginBottom: "10px" }}
               variant="contained"
               onClick={handleSubmit}
             >
               {t("submit")}
-            </Button>
-            <Button onClick={handleLogin}>
-              <Typography>{t("login")}</Typography>
-            </Button>
+            </CustomButton>
           </Box>
         </Grid>
       </Grid>

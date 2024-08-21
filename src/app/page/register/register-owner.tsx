@@ -6,6 +6,8 @@ import { Box, Button, Grid, TextField, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
+import CustomTextField from "@/app/component/custom-textfield";
+import CustomButton from "@/app/component/custom-button";
 type Props = {};
 
 export const RegisterOwner = (props: Props) => {
@@ -59,18 +61,19 @@ export const RegisterOwner = (props: Props) => {
       <Grid
         container
         sx={{
-          height: "100%",
+          height: "100vh",
           justifyContent: "center",
           alignItems: "center",
-          marginTop: "30px",
+          backgroundColor: "#55BA76",
         }}
       >
         <Grid
           item
           sx={{
-            border: "1px solid",
+            border: "1px solid #55BA76",
             borderRadius: "10px",
             width: "auto",
+            backgroundColor: "white",
             padding: 2,
           }}
         >
@@ -82,6 +85,7 @@ export const RegisterOwner = (props: Props) => {
               fontSize: "50px",
               fontWeight: "600",
               marginBottom: "20px",
+              color: "#55BA76",
             }}
           >
             {t("register")}
@@ -93,6 +97,7 @@ export const RegisterOwner = (props: Props) => {
               alignItems: "center",
               fontSize: "20px",
               marginBottom: "20px",
+              color: "#55BA76",
             }}
           >
             {t("basic")}
@@ -105,7 +110,7 @@ export const RegisterOwner = (props: Props) => {
               alignItems: "center",
             }}
           >
-            <TextField
+            <CustomTextField
               sx={{ width: "400px", marginBottom: "15px" }}
               id="outlined-basic"
               label={t("l_name")}
@@ -113,7 +118,7 @@ export const RegisterOwner = (props: Props) => {
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
             />
-            <TextField
+            <CustomTextField
               sx={{ width: "400px", marginBottom: "15px" }}
               id="outlined-basic"
               label={t("f_name")}
@@ -121,7 +126,7 @@ export const RegisterOwner = (props: Props) => {
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
             />
-            <TextField
+            <CustomTextField
               sx={{ width: "400px", marginBottom: "15px" }}
               id="outlined-basic"
               value={email}
@@ -129,7 +134,7 @@ export const RegisterOwner = (props: Props) => {
               variant="outlined"
               onChange={(e) => setEmail(e.target.value)}
             />
-            <TextField
+            <CustomTextField
               sx={{ width: "400px", marginBottom: "15px" }}
               id="outlined-basic"
               label={t("password")}
@@ -138,7 +143,7 @@ export const RegisterOwner = (props: Props) => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <TextField
+            <CustomTextField
               sx={{ width: "400px", marginBottom: "15px" }}
               id="outlined-basic"
               label={t("confirm")}
@@ -149,7 +154,7 @@ export const RegisterOwner = (props: Props) => {
               error={!!errorMessage}
               helperText={errorMessage}
             />
-            <TextField
+            <CustomTextField
               sx={{ width: "400px", marginBottom: "15px" }}
               id="outlined-basic"
               label={t("phone")}
@@ -167,16 +172,22 @@ export const RegisterOwner = (props: Props) => {
               alignItems: "flex-end",
             }}
           >
-            <Button
+            <CustomButton
               sx={{ width: "15vh", marginBottom: "10px" }}
               variant="contained"
               onClick={handleRegister}
             >
               {t("next")}
-            </Button>
-            <Button onClick={handleLogin}>
+            </CustomButton>
+            <CustomButton
+              sx={{
+                background: "white",
+                color: "#55BA76",
+              }}
+              onClick={handleLogin}
+            >
               <Typography>{t("login")}</Typography>
-            </Button>
+            </CustomButton>
           </Box>
         </Grid>
       </Grid>

@@ -4,11 +4,10 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "@/app/i18n/i18n";
-import Login from "./page/Login";
-import RegisterOwner from "./page/Register/RegisterOwner";
+import RegisterOwner from "./page/register/register-owner";
+import RegisterStore from "./page/register/register-store";
 import HomePage from "./page/HomePage";
-import Header from "./component/Header";
-import RegisterStore from "./page/Register/RegisterStore";
+import Login from "./page/Login";
 import Profile from "./page/Profile";
 // import MainLayout from "./layout/MainLayout";
 const show = true;
@@ -33,10 +32,10 @@ export default function Home() {
 
         <Routes>
           <Route index path="/" element={<Login />} />
-          <Route path="/register" element={<RegisterOwner />} />
+          <Route path="/register/register-owner" element={<RegisterOwner />} />
           <Route path="/register-store" element={<RegisterStore />} />
           {/* <Route path="/" element={<MainLayout />}> */}
-          <Route path="/homePage" element={<HomePage />} />
+          <Route path="/homepage" element={<HomePage />} />
           <Route
             path="/profile"
             element={

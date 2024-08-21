@@ -1,17 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { Button, Modal } from "react-bootstrap";
-import Header from "../component/Header";
-import Menu from "../component/Menu";
-import { Box, Toolbar, Typography } from "@mui/material";
+import { Box, Toolbar } from "@mui/material";
+import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
-
+import Header from "../component/header";
+import Menu from "../component/menu";
 type Props = {
   show: boolean;
   handleClose: () => void;
   dataDetailts: any;
 };
 
-const Profile = (props: Props) => {
+export const Profile = (props: Props) => {
   const { show, handleClose, dataDetailts } = props;
   const [fname, setFName] = useState("");
   const [lname, setLName] = useState("");
