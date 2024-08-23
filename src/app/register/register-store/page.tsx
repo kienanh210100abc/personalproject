@@ -1,22 +1,20 @@
 "use client";
 
-import React, { useState } from "react";
+import CustomButton from "@/app/component/custom-button";
+import CustomTextField from "@/app/component/custom-textfield";
 import {
   Box,
-  Button,
   FormControl,
   Grid,
   InputLabel,
   MenuItem,
   Select,
   SelectChangeEvent,
-  TextField,
   Typography,
 } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import CustomTextField from "@/app/component/custom-textfield";
-import CustomButton from "@/app/component/custom-button";
 type Props = {};
 
 const RegisterStore = (props: Props) => {
@@ -27,8 +25,9 @@ const RegisterStore = (props: Props) => {
   const [fb, setFb] = useState("");
   const [tt, setTt] = useState("");
   const [img, setImg] = useState<File | null>(null);
+  const router = useRouter();
 
-  const { t } = useTranslation(["register"]);
+  const { t } = useTranslation(["language"]);
   // const navigate = useNavigate();
   const handleSubmit = () => {
     console.log({
@@ -41,6 +40,7 @@ const RegisterStore = (props: Props) => {
       img,
     });
     // navigate("/homePage");
+    router.push("/page/homepage");
   };
   const handleImageChange = (e: any) => {
     const file = e.target.files[0];
@@ -52,7 +52,7 @@ const RegisterStore = (props: Props) => {
     setType(event.target.value as string);
   };
   const handleLogin = () => {
-    // navigate("/");
+    router.push("/");
   };
   return (
     <>
@@ -129,14 +129,14 @@ const RegisterStore = (props: Props) => {
                 marginBottom: "15px",
                 "& .MuiOutlinedInput-root": {
                   "& fieldset": {
-                    borderColor: "default", // Giữ màu mặc định khi không focused
+                    borderColor: "default",
                   },
                   "&.Mui-focused fieldset": {
-                    borderColor: "#55BA76", // Màu khi focused
+                    borderColor: "#55BA76",
                   },
                 },
                 "& .MuiInputLabel-root.Mui-focused": {
-                  color: "#55BA76", // Màu label khi focused
+                  color: "#55BA76",
                 },
               }}
               variant="outlined"

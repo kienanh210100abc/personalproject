@@ -21,7 +21,7 @@ const RegisterOwner = (props: Props) => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   // const navigate = useNavigate();
-  const { t } = useTranslation(["register"]);
+  const { t } = useTranslation(["language"]);
   const router = useRouter();
 
   const handleValidatePassword = () => {
@@ -40,7 +40,7 @@ const RegisterOwner = (props: Props) => {
         const response = await register(email, password);
         if (response) {
           toast.success(t("success"));
-          router.push("/page/register/register-store");
+          router.push("/register/register-store");
         }
       } catch (error) {
         toast.error(t("fail"));
@@ -56,7 +56,7 @@ const RegisterOwner = (props: Props) => {
     }
   };
   const handleLogin = () => {
-    // navigate("/");
+    router.push("/");
   };
 
   return (
