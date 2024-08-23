@@ -97,14 +97,11 @@ export const Login = (props: Props) => {
                 color: "#55BA76",
                 backgroundColor: "white",
               }}
-              onClick={handleLogin}
+              onClick={handleRegister}
             >
-              {t("login")}
-            </CustomButton>
-
-            <CustomButton onClick={handleRegister}>
               {t("register")}
             </CustomButton>
+            <CustomButton onClick={handleLogin}>{t("login")}</CustomButton>
           </Box>
         </Grid>
       </Grid>
