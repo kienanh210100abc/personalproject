@@ -30,7 +30,7 @@ const defaultNS = "login";
 i18n.use(initReactI18next).init({
   resources,
   lng: "vi",
-  ns: ["login", "register", "header"],
+  ns: ["login", "register", "header", "menu"],
   defaultNS,
   fallbackLng: "vi",
   interpolation: {

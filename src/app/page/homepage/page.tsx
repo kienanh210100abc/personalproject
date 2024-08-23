@@ -3,8 +3,8 @@
 import React from "react";
 import { Box, Toolbar } from "@mui/material";
 import { Outlet } from "react-router-dom";
-import Header from "../component/header";
-import Menu from "../component/menu";
+import Header from "@/app/component/header";
+import Menu from "@/app/component/menu";
 type Props = {};
 
 const HomePage = (props: Props) => {
