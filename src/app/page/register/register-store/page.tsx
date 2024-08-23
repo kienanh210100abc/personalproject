@@ -29,7 +29,7 @@ const RegisterStore = (props: Props) => {
   const [img, setImg] = useState<File | null>(null);
 
   const { t } = useTranslation(["register"]);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const handleSubmit = () => {
     console.log({
       storeName,
@@ -40,7 +40,7 @@ const RegisterStore = (props: Props) => {
       tt,
       img,
     });
-    navigate("/homePage");
+    // navigate("/homePage");
   };
   const handleImageChange = (e: any) => {
     const file = e.target.files[0];
@@ -52,7 +52,7 @@ const RegisterStore = (props: Props) => {
     setType(event.target.value as string);
   };
   const handleLogin = () => {
-    navigate("/");
+    // navigate("/");
   };
   return (
     <>

@@ -21,7 +21,7 @@ export const Header = (props: Props) => {
   const [profileAnchorEl, setProfileAnchorEl] =
     React.useState<null | HTMLElement>(null);
   const [currentLanguage, setCurrentLanguage] = React.useState<string>("vi");
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const open = Boolean(anchorEl);
   const profilePopoverOpen = Boolean(profileAnchorEl);
   const id = open ? "simple-popper" : undefined;
@@ -57,11 +57,11 @@ export const Header = (props: Props) => {
 
   const handleLogout = () => {
     localStorage.clear();
-    navigate("/");
+    // navigate("/");
   };
 
   const viewProfile = () => {
-    navigate("/profile");
+    // navigate("/profile");
   };
 
   return (

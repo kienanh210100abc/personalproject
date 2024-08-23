@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { register } from "@/app/service/service";
 import { Box, Button, Grid, TextField, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
@@ -8,9 +8,11 @@ import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 import CustomTextField from "@/app/component/custom-textfield";
 import CustomButton from "@/app/component/custom-button";
+import { useRouter } from "next/navigation";
+
 type Props = {};
 
-export const RegisterOwner = (props: Props) => {
+const RegisterOwner = (props: Props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [lastName, setLastName] = useState("");
@@ -18,8 +20,9 @@ export const RegisterOwner = (props: Props) => {
   const [phone, setPhone] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const { t } = useTranslation(["register"]);
+  const router = useRouter();
 
   const handleValidatePassword = () => {
     if (password !== confirmPassword) {
@@ -37,7 +40,7 @@ export const RegisterOwner = (props: Props) => {
         const response = await register(email, password);
         if (response) {
           toast.success(t("success"));
-          navigate("/register-store");
+          router.push("/page/register/register-store");
         }
       } catch (error) {
         toast.error(t("fail"));
@@ -53,7 +56,7 @@ export const RegisterOwner = (props: Props) => {
     }
   };
   const handleLogin = () => {
-    navigate("/");
+    // navigate("/");
   };
 
   return (

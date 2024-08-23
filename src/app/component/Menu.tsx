@@ -6,21 +6,20 @@ import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
-import { useLocation, useNavigate } from "react-router-dom";
 
 type Props = {};
 
 export const Menu = (props: Props) => {
-  const location = useLocation();
+  // const location = useLocation();
   const { t } = useTranslation(["menu"]);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   let style = {
     textDecoration: "none",
   };
 
   const handleClick = () => {
-    navigate("/homePage");
+    // navigate("/homePage");
   };
   return (
     <>
@@ -69,7 +68,8 @@ export const Menu = (props: Props) => {
           >
             <div>
               <ul>
-                <Button onClick={() => navigate("/homePage")}>
+                <Button>
+                  {/* //  onClick={() => navigate("/homePage")}> */}
                   <Typography>{t("dashboard")}</Typography>
                 </Button>
               </ul>
