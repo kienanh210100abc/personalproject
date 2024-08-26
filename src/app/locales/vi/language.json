@@ -4,6 +4,8 @@
   "vi": "Tiếng Việt",
   "logout": "Đăng xuất",
   "hello": "Xin chào",
+  "login-failed": "Đăng nhập thất bại",
+  "login-success": "Đăng nhập thành công",
   "profile": "Thông tin cá nhân",
   "order": "Số lượng order hôm nay",
   "dashboard": "Thống kê",
@@ -44,5 +46,12 @@
   "tab1": "Thông tin bán hàng",
   "tab2": "Đổi mật khẩu",
   "vat": "Thuế VAT (%)",
-  "logo": "Logo"
+  "logo": "Logo",
+  "change": "Đổi mật khẩu cửa hàng",
+  "current-pass": "Mật khẩu hiện tại",
+  "new-pass": "Mật khẩu mới",
+  "confirm-passcode": "Xác nhận mật khẩu",
+  "validate-pass": "Mật khẩu không khớp",
+  "not-found": "Không tìm thấy người dùng",
+  "empty-login": "Không được bỏ trống email hoặc mật khẩu"
 }

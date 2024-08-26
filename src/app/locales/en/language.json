@@ -40,5 +40,13 @@
   "hotline": "Hotline",
   "fb": "Facebook",
   "tt": "Tiktok",
-  "submit": "Submit"
+  "submit": "Submit",
+  "tab1": "Setting sale spaces",
+  "tab2": "Change pass code",
+  "vat": "VAT Tax(%)",
+  "logo": "Logo",
+  "change": "Change store passcode",
+  "current-pass": "Current passcode",
+  "new-pass": "New passcode",
+  "confirm-passcode": "Confirm passcode"
 }

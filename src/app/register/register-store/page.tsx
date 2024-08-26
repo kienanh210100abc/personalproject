@@ -28,8 +28,13 @@ const RegisterStore = (props: Props) => {
   const router = useRouter();
 
   const { t } = useTranslation(["language"]);
+
   // const navigate = useNavigate();
   const handleSubmit = () => {
+    localStorage.setItem(
+      "store",
+      JSON.stringify({ storeName, type, hotline, description, fb, tt, img })
+    );
     console.log({
       storeName,
       type,
@@ -50,9 +55,6 @@ const RegisterStore = (props: Props) => {
   };
   const handleTypeChange = (event: SelectChangeEvent<string>) => {
     setType(event.target.value as string);
-  };
-  const handleLogin = () => {
-    router.push("/");
   };
   return (
     <>

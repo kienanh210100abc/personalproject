@@ -1,14 +1,13 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { register } from "@/app/service/service";
-import { Box, Button, Grid, TextField, Typography } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import { useTranslation } from "react-i18next";
-import CustomTextField from "@/app/component/custom-textfield";
 import CustomButton from "@/app/component/custom-button";
+import CustomTextField from "@/app/component/custom-textfield";
+import { register } from "@/app/service/service";
+import { Box, Grid, Typography } from "@mui/material";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { toast } from "react-toastify";
 
 type Props = {};
 
@@ -20,26 +19,26 @@ const RegisterOwner = (props: Props) => {
   const [phone, setPhone] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  // const navigate = useNavigate();
   const { t } = useTranslation(["language"]);
   const router = useRouter();
 
   const handleValidatePassword = () => {
     if (password !== confirmPassword) {
-      return "Mật khẩu xác nhận không khớp!";
+      return t("validate-pass");
     }
     return "";
   };
 
   const handleRegister = async () => {
-    const error = handleValidatePassword();
-    if (error) {
-      setErrorMessage(error);
+    const errorPass = handleValidatePassword();
+    if (errorPass) {
+      setErrorMessage(errorPass);
     } else {
       try {
         const response = await register(email, password);
         if (response) {
           toast.success(t("success"));
+          localStorage.setItem("user", JSON.stringify({ firstName }));
           router.push("/register/register-store");
         }
       } catch (error) {

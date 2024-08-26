@@ -4,10 +4,10 @@ import { Box, Grid, Typography } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { toast } from "react-toastify";
 import CustomButton from "../component/custom-button";
 import CustomTextField from "../component/custom-textfield";
 import { login } from "../service/service";
+import { toast } from "react-toastify";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -15,19 +15,39 @@ export default function Login() {
   const { t } = useTranslation(["language"]);
   const router = useRouter();
 
+  const handleErrorMessage = (message: string) => {
+    const lowerCaseMessage = message.toLowerCase();
+    switch (lowerCaseMessage) {
+      case "user not found":
+        toast.error(t("not-found"));
+        break;
+      case "missing email or username":
+        toast.error(t("empty-login"));
+        break;
+      default:
+        toast.error(t("login-failed"));
+    }
+  };
+
   const handleLogin = async () => {
     try {
       const response = await login(email, password);
 
       if (response) {
-        toast.success("Successfully");
-        localStorage.setItem("user", JSON.stringify({ email }));
+        toast.success(t("login-success"));
+        localStorage.setItem("user", JSON.stringify({ email, password }));
         router.push("/page/homepage");
       }
     } catch (error) {
-      toast.error("Login failed");
+      if (error instanceof Error) {
+        console.log("Error message:", error.message); // Log thông điệp lỗi
+        handleErrorMessage(error.message);
+      } else {
+        toast.error(t("login-failed"));
+      }
     }
   };
+
   const handleRegister = () => {
     router.push("register/register-owner");
   };
@@ -69,7 +89,7 @@ export default function Login() {
               sx={{ width: "100%", marginBottom: "30px" }}
               id="outlined-basic"
               value={email}
-              label={t("email")}
+              label={t("email") + ": eve.holt@reqres.in"}
               variant="outlined"
               onChange={(e) => setEmail(e.target.value)}
             />

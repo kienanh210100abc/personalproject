@@ -8,6 +8,7 @@ import Image from "next/image";
 import { useTranslation } from "react-i18next";
 import CustomButton from "../custom-button";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 type Props = {};
 
@@ -15,10 +16,15 @@ export const Menu = (props: Props) => {
   const { t } = useTranslation(["language"]);
   const router = useRouter();
 
-  let style = {
-    textDecoration: "none",
-  };
-
+  const [storeName, setStoreName] = useState("");
+  useEffect(() => {
+    const storeStorage = localStorage.getItem("store");
+    if (storeStorage) {
+      const store = JSON.parse(storeStorage);
+      setStoreName(store.storeName);
+    } else {
+    }
+  }, []);
   const handleClick = () => {
     router.push("/page/homepage");
   };
@@ -62,7 +68,7 @@ export const Menu = (props: Props) => {
               fontWeight: "500",
             }}
           >
-            STORE NAME
+            {storeName}
           </Typography>
           <List
             className="menuNav"
