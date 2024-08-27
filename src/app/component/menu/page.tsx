@@ -1,19 +1,20 @@
 "use client";
 import logo from "@/app/assets/sir.png";
-import { Button, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import Image from "next/image";
-import { useTranslation } from "react-i18next";
-import CustomButton from "../custom-button";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import CustomButton from "../custom-button";
 
 type Props = {};
 
 export const Menu = (props: Props) => {
   const { t } = useTranslation(["language"]);
+
   const router = useRouter();
 
   const [storeName, setStoreName] = useState("");
@@ -30,6 +31,24 @@ export const Menu = (props: Props) => {
   };
   const handleGeneral = () => {
     router.push("/page/general");
+  };
+  const handleProduct = () => {
+    router.push("/page/product");
+  };
+  const handleSale = () => {
+    router.push("/page/sale");
+  };
+  const handleSpent = () => {
+    router.push("/page/spent");
+  };
+  const handleIncome = () => {
+    router.push("/page/income");
+  };
+  const handleEmployee = () => {
+    router.push("/page/employee");
+  };
+  const handleCustomer = () => {
+    router.push("/page/customer");
   };
   return (
     <>
@@ -68,7 +87,7 @@ export const Menu = (props: Props) => {
               fontWeight: "500",
             }}
           >
-            {storeName}
+            {storeName || "Store name"}
           </Typography>
           <List
             className="menuNav"
@@ -96,32 +115,32 @@ export const Menu = (props: Props) => {
                 </CustomButton>
               </ul>
               <ul>
-                <CustomButton>
+                <CustomButton onClick={handleProduct}>
                   <Typography>{t("product")}</Typography>
                 </CustomButton>
               </ul>
               <ul>
-                <CustomButton>
+                <CustomButton onClick={handleSale}>
                   <Typography>{t("sale")}</Typography>
                 </CustomButton>
               </ul>
               <ul>
-                <CustomButton>
+                <CustomButton onClick={handleSpent}>
                   <Typography>{t("spent")}</Typography>
                 </CustomButton>
               </ul>
               <ul>
-                <CustomButton>
+                <CustomButton onClick={handleIncome}>
                   <Typography>{t("income")}</Typography>
                 </CustomButton>
               </ul>
               <ul>
-                <CustomButton>
+                <CustomButton onClick={handleEmployee}>
                   <Typography>{t("employee")}</Typography>
                 </CustomButton>
               </ul>
               <ul>
-                <CustomButton>
+                <CustomButton onClick={handleCustomer}>
                   <Typography>{t("customer")}</Typography>
                 </CustomButton>
               </ul>

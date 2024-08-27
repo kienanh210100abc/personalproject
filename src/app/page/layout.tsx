@@ -1,4 +1,6 @@
-import { ReactNode } from "react";
+"use client";
+
+import { ReactNode, useState } from "react";
 import Header from "../component/header/page";
 import Menu from "../component/menu/page";
 import { Box, Toolbar } from "@mui/material";
@@ -19,6 +21,7 @@ export default function AuthenticatedLayout({
         </Box>
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
           <Toolbar />
+
           {children}
         </Box>
       </Box>

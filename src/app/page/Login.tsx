@@ -8,11 +8,13 @@ import CustomButton from "../component/custom-button";
 import CustomTextField from "../component/custom-textfield";
 import { login } from "../service/service";
 import { toast } from "react-toastify";
+import CircularProgress from "@mui/material/CircularProgress";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { t } = useTranslation(["language"]);
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
   const handleErrorMessage = (message: string) => {
@@ -30,9 +32,9 @@ export default function Login() {
   };
 
   const handleLogin = async () => {
+    setIsLoading(true);
     try {
       const response = await login(email, password);
-
       if (response) {
         toast.success(t("login-success"));
         localStorage.setItem("user", JSON.stringify({ email, password }));
@@ -40,19 +42,45 @@ export default function Login() {
       }
     } catch (error) {
       if (error instanceof Error) {
-        console.log("Error message:", error.message); // Log thông điệp lỗi
+        console.log("Error message:", error.message);
         handleErrorMessage(error.message);
       } else {
         toast.error(t("login-failed"));
       }
+    } finally {
+      setIsLoading(false);
     }
   };
 
-  const handleRegister = () => {
-    router.push("register/register-owner");
+  const handleRegister = async () => {
+    setIsLoading(true);
+    try {
+      await router.push("register/register-owner");
+      // await new Promise((resolve) => setTimeout(resolve, 10000));
+    } finally {
+      setIsLoading(false);
+    }
   };
   return (
     <>
+      {isLoading && (
+        <Box
+          sx={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: 9999,
+          }}
+        >
+          <CircularProgress sx={{ color: "green" }} size={60} color="primary" />
+        </Box>
+      )}
       <Grid
         container
         sx={{
