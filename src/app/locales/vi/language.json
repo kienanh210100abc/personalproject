@@ -55,5 +55,13 @@
   "not-found": "Không tìm thấy người dùng",
   "empty-login": "Không được bỏ trống email hoặc mật khẩu",
   "add-new": "Thêm mới",
-  "space": "Không gian"
+  "space": "Không gian",
+  "search": "Tìm kiếm",
+  "price": "Giá",
+  "unit": "Đơn vị",
+  "duration": "Khoảng",
+  "barcode": "Mã vạch",
+  "single": "Lẻ",
+  "combo": "Combo",
+  "name": "Tên"
 }

@@ -48,5 +48,18 @@
   "change": "Change store passcode",
   "current-pass": "Current passcode",
   "new-pass": "New passcode",
-  "confirm-passcode": "Confirm passcode"
+  "confirm-passcode": "Confirm passcode",
+  "validate-pass": "Password does not match",
+  "not-found": "User not found",
+  "empty-login": "Email / Password are not empty",
+  "add-new": "Add new",
+  "space": "Space",
+  "search": "Search",
+  "price": "Price",
+  "unit": "Unit",
+  "duration": "Duration",
+  "barcode": "Barcode",
+  "single": "Single",
+  "combo": "Combo",
+  "name": "Name"
 }

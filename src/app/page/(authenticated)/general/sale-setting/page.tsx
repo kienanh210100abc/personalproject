@@ -9,6 +9,8 @@ import { useTranslation } from "react-i18next";
 import ChangePass from "../change-pass/page";
 import ManageSpace from "./manage-space";
 import AddNew from "./add-new";
+import CustomButton from "@/app/component/custom-button";
+import { useRouter } from "next/navigation";
 
 type Props = {};
 interface TabPanelProps {
@@ -40,9 +42,16 @@ function a11yProps(index: number) {
 }
 const SaleSetting = (props: Props) => {
   const [value, setValue] = React.useState(0);
+  const router = useRouter();
   const { t } = useTranslation(["language"]);
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
+  };
+  const hadleSaleSetting = () => {
+    router.push("sale-setting");
+  };
+  const hadleChangePass = () => {
+    router.push("change-pass");
   };
   return (
     <>
@@ -57,6 +66,17 @@ const SaleSetting = (props: Props) => {
             <Typography sx={{ fontSize: "30px", fontWeight: "600" }}>
               {t("general")}
             </Typography>
+          </Box>
+          <Box sx={{ width: "100%", marginBottom: "30px" }}>
+            <Box>
+              <CustomButton
+                sx={{ marginRight: "20px" }}
+                onClick={hadleSaleSetting}
+              >
+                {t("tab1")}
+              </CustomButton>
+              <CustomButton onClick={hadleChangePass}>{t("tab2")}</CustomButton>
+            </Box>
           </Box>
           <Box sx={{ width: "100%" }}>
             <Box sx={{ borderBottom: 1, borderColor: "divider" }}>

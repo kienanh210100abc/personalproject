@@ -62,7 +62,7 @@ const AddNew = (props: Props) => {
                     <CustomTextField
                       sx={{ width: "400px", marginBottom: "15px" }}
                       id="outlined-basic"
-                      label={t("f_name")}
+                      label={t("name")}
                       variant="outlined"
                       //   value={storeName}
                       //   onChange={(e) => setStoreName(e.target.value)}
