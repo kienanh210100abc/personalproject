@@ -3,6 +3,7 @@
 import CustomButton from "@/app/component/custom-button";
 import CustomTextField from "@/app/component/custom-textfield";
 import { Box, Grid, Typography } from "@mui/material";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -13,6 +14,7 @@ const ChangePass = (props: Props) => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const router = useRouter();
 
   useEffect(() => {
     const userStorage = localStorage.getItem("user");
@@ -36,10 +38,23 @@ const ChangePass = (props: Props) => {
       setErrorMessage(errorPass);
     }
   };
-
+  const hadleSaleSetting = () => {
+    router.push("sale-setting");
+  };
   return (
     <>
       <Box sx={{ width: "100%" }}>
+        <Box sx={{ padding: "20px" }}>
+          <Typography sx={{ fontSize: "30px", fontWeight: "600" }}>
+            {t("general")}
+          </Typography>
+        </Box>
+        <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+          <CustomButton sx={{ marginRight: "20px" }} onClick={hadleSaleSetting}>
+            {t("tab1")}
+          </CustomButton>
+          <CustomButton>{t("tab2")}</CustomButton>
+        </Box>
         <Box>
           <Grid
             container

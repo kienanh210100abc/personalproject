@@ -43,7 +43,7 @@
   "fb": "Facebook",
   "tt": "Tiktok",
   "submit": "Xác nhận",
-  "tab1": "Thông tin bán hàng",
+  "tab1": "Cài đặt bán hàng",
   "tab2": "Đổi mật khẩu",
   "vat": "Thuế VAT (%)",
   "logo": "Logo",
@@ -53,5 +53,7 @@
   "confirm-passcode": "Xác nhận mật khẩu",
   "validate-pass": "Mật khẩu không khớp",
   "not-found": "Không tìm thấy người dùng",
-  "empty-login": "Không được bỏ trống email hoặc mật khẩu"
+  "empty-login": "Không được bỏ trống email hoặc mật khẩu",
+  "add-new": "Thêm mới",
+  "space": "Không gian"
 }
