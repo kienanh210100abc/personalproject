@@ -35,15 +35,7 @@ const RegisterStore = (props: Props) => {
       "store",
       JSON.stringify({ storeName, type, hotline, description, fb, tt, img })
     );
-    console.log({
-      storeName,
-      type,
-      hotline,
-      description,
-      fb,
-      tt,
-      img,
-    });
+
     // navigate("/homePage");
     router.push("/page/homepage");
   };

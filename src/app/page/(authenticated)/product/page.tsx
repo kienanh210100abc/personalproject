@@ -1,4 +1,5 @@
 "use client";
+import React, { useState } from "react";
 import CustomButton from "@/app/component/custom-button";
 import CustomTextField from "@/app/component/custom-textfield";
 import { Box, Grid, Typography } from "@mui/material";
@@ -6,15 +7,32 @@ import { useRouter } from "next/navigation";
 import { useTranslation } from "react-i18next";
 import TableProduct from "./table-product";
 
-type Props = {};
-
-const ProductManagement = (props: Props) => {
+const ProductManagement: React.FC = () => {
   const router = useRouter();
   const { t } = useTranslation(["language"]);
+  const [searchInput, setSearchInput] = useState<string>("");
+  const [searchQuery, setSearchQuery] = useState<string>("");
 
-  const handlleClick = () => {
+  const handleSearchInputChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setSearchInput(event.target.value);
+  };
+
+  const handleSearch = () => {
+    setSearchQuery(searchInput);
+  };
+
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      handleSearch();
+    }
+  };
+
+  const handleClick = () => {
     router.push("/page/product/add-new");
   };
+
   return (
     <>
       <Box sx={{ width: "100%" }}>
@@ -24,7 +42,7 @@ const ProductManagement = (props: Props) => {
           </Typography>
         </Box>
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-          <CustomButton onClick={handlleClick}>{t("add-new")}</CustomButton>
+          <CustomButton onClick={handleClick}>{t("add-new")}</CustomButton>
         </Box>
         <Box>
           <Grid
@@ -47,8 +65,14 @@ const ProductManagement = (props: Props) => {
                 <CustomTextField
                   sx={{ width: "300px" }}
                   placeholder={t("search")}
+                  value={searchInput}
+                  onChange={handleSearchInputChange}
+                  onKeyPress={handleKeyPress}
                 />
-                <CustomButton sx={{ width: "auto", height: "55px" }}>
+                <CustomButton
+                  sx={{ width: "auto", height: "55px" }}
+                  onClick={handleSearch}
+                >
                   {t("search")}
                 </CustomButton>
               </Box>
@@ -81,7 +105,7 @@ const ProductManagement = (props: Props) => {
                 backgroundColor: "white",
               }}
             >
-              <TableProduct />
+              <TableProduct searchQuery={searchQuery} />
             </Grid>
           </Grid>
         </Box>

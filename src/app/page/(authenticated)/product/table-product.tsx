@@ -89,7 +89,11 @@ const rows = [
   createData("Brazil", "BR", 210147125, 8515767, ""),
 ];
 
-const TableProduct = () => {
+interface TableProductProps {
+  searchQuery: string;
+}
+
+const TableProduct: React.FC<TableProductProps> = ({ searchQuery }) => {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
@@ -103,6 +107,19 @@ const TableProduct = () => {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
+
+  const filteredRows = React.useMemo(() => {
+    return rows.filter((row) => {
+      const query = searchQuery.toLowerCase();
+      return (
+        row.name.toLowerCase().includes(query) ||
+        row.code.toLowerCase().includes(query) ||
+        row.population.toString().includes(query) ||
+        row.size.toString().includes(query)
+      );
+    });
+  }, [searchQuery]);
+
   return (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
       <TableContainer sx={{ maxHeight: 440 }}>
@@ -121,7 +138,7 @@ const TableProduct = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows
+            {filteredRows
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row) => {
                 return (
@@ -145,7 +162,7 @@ const TableProduct = () => {
       <TablePagination
         rowsPerPageOptions={[10, 25, 100]}
         component="div"
-        count={rows.length}
+        count={filteredRows.length}
         rowsPerPage={rowsPerPage}
         page={page}
         onPageChange={handleChangePage}

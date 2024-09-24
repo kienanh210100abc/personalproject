@@ -29,7 +29,6 @@ export const Header = (props: Props) => {
       const user = JSON.parse(userStorage);
       setEmail(user.email);
     } else {
-      console.log("Không tìm thấy dữ liệu người dùng trong localStorage.");
     }
   }, []);
   const changeLanguage = (lng: "en" | "vi") => {
